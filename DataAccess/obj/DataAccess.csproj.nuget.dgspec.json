@@ -44,33 +44,45 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Autofac": {
+            "Castle.Core": {
               "target": "Package",
-              "version": "[6.3.0, )"
+              "version": "[4.4.1, )"
             },
-            "Autofac.Extensions.DependencyInjection": {
+            "FluentValidation": {
               "target": "Package",
-              "version": "[7.2.0, )"
-            },
-            "Autofac.Extras.DynamicProxy": {
-              "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[10.3.3, )"
             },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
               "version": "[2.2.2, )"
             },
-            "Microsoft.AspNetCore.Http.Features": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.15, )"
+              "version": "[5.0.9, )"
             },
-            "Microsoft.Extensions.Configuration": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[5.0.0, )"
             },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.12.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.12.0, )"
             }
           },
           "imports": [
