@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9959e499-7136-43ca-8b02-eca43ea8dc51": {
+      "ProjectGuid": "9959e499-7136-43ca-8b02-eca43ea8dc51",
+      "DisplayName": "DataAccess",
+      "ColorIndex": 0
+    },
+    "d8640bc4-b9c4-4f9e-9d19-3cfc9e70d602": {
+      "ProjectGuid": "d8640bc4-b9c4-4f9e-9d19-3cfc9e70d602",
+      "DisplayName": "Core",
+      "ColorIndex": 1
+    },
+    "10a59499-b1dd-4094-81ba-0c7b0b4db5f9": {
+      "ProjectGuid": "10a59499-b1dd-4094-81ba-0c7b0b4db5f9",
+      "DisplayName": "Business",
+      "ColorIndex": 2
+    },
+    "bfdeaaf2-f971-4f74-a3d1-7c87e075c974": {
+      "ProjectGuid": "bfdeaaf2-f971-4f74-a3d1-7c87e075c974",
+      "DisplayName": "Entities",
+      "ColorIndex": 3
+    },
+    "ca3fc375-f34a-4a14-9df7-ba4e50c906d5": {
+      "ProjectGuid": "ca3fc375-f34a-4a14-9df7-ba4e50c906d5",
+      "DisplayName": "MVC",
+      "ColorIndex": 4
+    },
+    "374cc015-c42c-4039-b6c1-d45d8049848b": {
+      "ProjectGuid": "374cc015-c42c-4039-b6c1-d45d8049848b",
+      "DisplayName": "Web.API",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}
