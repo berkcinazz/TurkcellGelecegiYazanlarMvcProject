@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hFXbBvIWHDInW72LfmS+MLpPZoECnVN14zoYE+LIv285+pCGINxhR20jD5Xf65LrfCALjYBYJBQRvS9qa6hlEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\BerkCinaz\\Desktop\\GelecegiYazanlar\\Solution1\\MVC\\MVC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BerkCinaz\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}
