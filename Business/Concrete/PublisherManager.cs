@@ -18,7 +18,8 @@ namespace Business.Concrete
         {
             var addToPublisher = new Publisher()
             {
-                Name = publisher.Name
+                Name = publisher.Name,
+                Address = publisher.Address,
             };
             _publisherDal.Add(addToPublisher);
             return new SuccessResult("Publisher Added");
@@ -28,7 +29,7 @@ namespace Business.Concrete
             var result = _publisherDal.Get(i => i.Id == publisherId);
             if (result == null) return new ErrorResult("Publisher Not Found");
             _publisherDal.Delete(result);
-            return new SuccessResult("Category Has Been Deleted");
+            return new SuccessResult("Publisher Has Been Deleted");
         }
         public IDataResult<List<Publisher>> GetAllPublishers()
         {

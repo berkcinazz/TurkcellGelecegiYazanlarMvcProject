@@ -47,6 +47,7 @@ namespace Business.Concrete
             var result = _authorDal.Get(i => i.Id == author.Id);
             if (result == null) return new ErrorResult("Author Not Found");
             result.Name = author.Name;
+            result.Surname = author.Surname;
             _authorDal.Update(result);
             return new SuccessResult("Author Updated");
         }
