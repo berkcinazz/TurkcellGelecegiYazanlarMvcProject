@@ -9,8 +9,8 @@ namespace Business.Concrete
 {
     public class BookManager : IBookService
     {
-        IBookDal _bookDal;
-        public BookManager(IBookDal bookDal)
+        IBrandDal _bookDal;
+        public BookManager(IBrandDal bookDal)
         {
             _bookDal = bookDal;
         }

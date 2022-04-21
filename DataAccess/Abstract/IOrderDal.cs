@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IBookDal : IRepositoryBase<Book>
+    public interface IOrderDal : IRepositoryBase<Order>
     {
     }
 }

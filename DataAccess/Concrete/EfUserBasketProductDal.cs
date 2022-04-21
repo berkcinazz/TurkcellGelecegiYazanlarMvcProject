@@ -5,7 +5,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete
 {
-    public class EfCategoryDal : EFRepositoryBase<Category, EFCoreContext>,ICategoryDal
+    public class EfUserBasketProductDal : EFRepositoryBase<UserBasketProduct, EFCoreContext>, IUserBasketProductDal
     {
     }
 }

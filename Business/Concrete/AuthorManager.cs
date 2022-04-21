@@ -9,8 +9,8 @@ namespace Business.Concrete
 {
     public class AuthorManager : IAuthorService
     {
-        IAuthorDal _authorDal;
-        public AuthorManager(IAuthorDal authorDal)
+        IAddressDal _authorDal;
+        public AuthorManager(IAddressDal authorDal)
         {
             _authorDal = authorDal;
         }

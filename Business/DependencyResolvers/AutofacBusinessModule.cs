@@ -23,10 +23,10 @@ namespace Business.DependencyResolvers
 
             //DataAccess
 
-            builder.RegisterType<EfAuthorDal>().As<IAuthorDal>().SingleInstance();
-            builder.RegisterType<EfBookDal>().As<IBookDal>().SingleInstance();
-            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
-            builder.RegisterType<EfPublisherDal>().As<IPublisherDal>().SingleInstance();
+            builder.RegisterType<EfAuthorDal>().As<IAddressDal>().SingleInstance();
+            builder.RegisterType<EfBookDal>().As<IBrandDal>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICreditCardDal>().SingleInstance();
+            builder.RegisterType<EfPublisherDal>().As<IOrderDal>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

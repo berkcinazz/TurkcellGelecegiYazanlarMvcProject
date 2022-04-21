@@ -9,8 +9,8 @@ namespace Business.Concrete
 {
     public class PublisherManager : IPublisherService
     {
-        IPublisherDal _publisherDal;
-        public PublisherManager(IPublisherDal publisherDal)
+        IOrderDal _publisherDal;
+        public PublisherManager(IOrderDal publisherDal)
         {
             _publisherDal = publisherDal;
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IPublisherDal : IRepositoryBase<Publisher>
+    public interface IBrandDal : IRepositoryBase<Brand>
     {
     }
 }

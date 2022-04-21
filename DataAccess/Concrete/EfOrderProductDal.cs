@@ -5,7 +5,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete
 {
-    public class EfAuthorDal:EFRepositoryBase<Author,EFCoreContext>,IAuthorDal
+    public class EfOrderProductDal : EFRepositoryBase<OrderProduct, EFCoreContext>, IOrderProductDal
     {
     }
 }

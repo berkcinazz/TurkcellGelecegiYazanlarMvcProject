@@ -15,9 +15,10 @@ namespace DataAccess.Concrete.EntityFramework
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=GYDatabase;Trusted_Connection=true");
         }
-        public DbSet<User> Users{ get; set; }
-        public DbSet<UserOperationClaim> UserOperationClaims{ get; set; }
-        public DbSet<OperationClaim> OperationClaims{ get; set; }
+        
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<CreditCard> CreditCards { get; set; }
