@@ -13,20 +13,39 @@ namespace Business.DependencyResolvers
     {
         protected override void Load(ContainerBuilder builder)
         {
+
             //Business
 
-            builder.RegisterType<AuthorManager>().As<IAuthorService>().SingleInstance();
-            builder.RegisterType<BookManager>().As<IBookService>().SingleInstance();
-            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
-            builder.RegisterType<PublisherManager>().As<IPublisherService>().SingleInstance();
+            builder.RegisterType<AddressManager>().As<IAddressService>().SingleInstance();
+            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<CreditCardManager>().As<ICreditCardService>().SingleInstance();
+            builder.RegisterType<OrderManager>().As<IOrderService>().SingleInstance();
+            builder.RegisterType<OrderProductManager>().As<IOrderProductService>().SingleInstance();
+            builder.RegisterType<ProductImageManager>().As<IProductImageService>().SingleInstance();
+            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
+            builder.RegisterType<ProductReviewManager>().As<IProductReviewService>().SingleInstance();
+            builder.RegisterType<UserBasketManager>().As<IUserBasketService>().SingleInstance();
+            builder.RegisterType<UserBasketProductManager>().As<IUserBasketProductService>().SingleInstance();
+            builder.RegisterType<UserFavoriteManager>().As<IUserFavoriteService>().SingleInstance();
 
 
             //DataAccess
 
-            builder.RegisterType<EfAuthorDal>().As<IAddressDal>().SingleInstance();
-            builder.RegisterType<EfBookDal>().As<IBrandDal>().SingleInstance();
-            builder.RegisterType<EfCategoryDal>().As<ICreditCardDal>().SingleInstance();
-            builder.RegisterType<EfPublisherDal>().As<IOrderDal>().SingleInstance();
+            builder.RegisterType<EfAddressDal>().As<IAddressDal>().SingleInstance();
+            builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
+            builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>().SingleInstance();
+            builder.RegisterType<EfOrderDal>().As<IOrderDal>().SingleInstance();
+            builder.RegisterType<EfOrderProductDal>().As<IOrderProductDal>().SingleInstance();
+            builder.RegisterType<EfProductImageDal>().As<IProductImageDal>().SingleInstance();
+            builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+            builder.RegisterType<EfProductReviewDal>().As<IProductReviewDal>().SingleInstance();
+            builder.RegisterType<EfUserBasketDal>().As<IUserBasketDal>().SingleInstance();
+            builder.RegisterType<EfUserBasketProductDal>().As<IUserBasketDal>().SingleInstance();
+            builder.RegisterType<EfUserFavoriteDal>().As<IUserFavoriteDal>().SingleInstance();
+
+            
+            //Others
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

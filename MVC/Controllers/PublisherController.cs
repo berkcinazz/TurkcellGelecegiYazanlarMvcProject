@@ -8,12 +8,12 @@ namespace MVC.Controllers
 {
     public class PublisherController : Controller
     {
-        IPublisherService _publisherService;
+        //IPublisherService _publisherService;
 
-        public PublisherController(IPublisherService publisherService)
-        {
-            _publisherService = publisherService;
-        }
+        //public PublisherController(IPublisherService publisherService)
+        //{
+        //    _publisherService = publisherService;
+        //}
 
         //public  Task<IActionResult> Index()
         //{

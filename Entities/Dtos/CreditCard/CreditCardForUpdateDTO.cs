@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Dtos.Author
+namespace Entities.Dtos.CreditCard
 {
-    public class AuthorForAddDto:IDto
+    public class CreditCardForUpdateDTO : IDto
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
 }

@@ -1,4 +1,10 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Helpers;
+using Core.Utilities.Results;
+using DataAccess.Abstract;
+using Entities.Concrete;
+using Entities.Dtos.Brand;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +13,45 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class BrandManager: IBrandService
+    public class BrandManager : IBrandService
     {
+        IBrandDal _brandDal;
+
+        public BrandManager(IBrandDal brandDal)
+        {
+            _brandDal = brandDal;
+        }
+        public IResult AddBrand(BrandForAddDTO brand)
+        {
+            Brand brandToAdd = new Brand()
+            {
+                Name = brand.Name,
+                Avatar = FileHelper.AddFromBase64(brand.Avatar, "brandavatars"),
+                Approved = false
+            };
+            _brandDal.Add(brandToAdd);
+            return new SuccessResult(Messages.BrandAdded);
+        }
+        public IResult DeleteBrand(int id)
+        {
+            var brandToDelete = _brandDal.Get(b => b.Id == id);
+            if (brandToDelete == null) return new ErrorResult(Messages.BrandNotFound);
+            _brandDal.Delete(brandToDelete);
+            return new SuccessResult(Messages.BrandDeleted);
+        }
+        public IDataResult<List<Brand>> GetAllBrands()
+        {
+            var result = _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(result);
+        }
+        public IResult UpdateBrand(BrandForUpdateDTO brand)
+        {
+            Brand brandToUpdate = _brandDal.Get(b => b.Id == brand.Id);
+            if (brandToUpdate == null) return new ErrorResult(Messages.BrandNotFound);
+            brandToUpdate.Name = brand.Name;
+            brandToUpdate.Avatar = brand.Avatar;
+            _brandDal.Update(brandToUpdate);
+            return new SuccessResult(Messages.BrandUpdated);
+        }
     }
 }

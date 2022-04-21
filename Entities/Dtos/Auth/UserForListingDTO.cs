@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Dtos.Category
+namespace Entities.Dtos.Auth
 {
-    public class CategoryForAddDto:IDto
+    public class UserForListingDTO : IDto
     {
+        public string Email { get; set; }
         public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }

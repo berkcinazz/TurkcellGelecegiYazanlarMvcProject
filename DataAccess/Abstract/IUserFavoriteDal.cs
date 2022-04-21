@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Entities.Concrete;
+using Entities.Dtos.UserFavorite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace DataAccess.Abstract
 {
     public interface IUserFavoriteDal : IRepositoryBase<UserFavorite>
     {
+        List<UserFavoriteForListingDTO> GetFavorites(int userId);
     }
 }
