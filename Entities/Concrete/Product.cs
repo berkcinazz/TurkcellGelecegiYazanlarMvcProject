@@ -21,16 +21,11 @@ namespace Entities.Concrete
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public string QuantityPerUnit { get; set; }
-        public string CommonCode { get; set; }
         public bool OnSale { get; set; }
-        public int? SalePercantage { get; set; }
         public bool Active { get; set; }
-        public bool Approved { get; set; }
         public string Description { get; set; }
-        public decimal ShippingCost { get; set; }
         public int BrandId { get; set; }
 
-        public virtual Brand Brand { get; set; }
         public virtual List<ProductImage> ProductImages { get; set; }
         public virtual List<ProductReview> ProductReviews { get; set; }
     }
