@@ -27,6 +27,10 @@ namespace MVC.Controllers
         {
             return View();
         }
+        public IActionResult AllPublishers()
+        {
+            return View("~/Views/Publisher/Publishers.cshtml");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
