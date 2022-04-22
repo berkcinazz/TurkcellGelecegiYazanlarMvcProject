@@ -85,5 +85,7 @@ namespace Business.Constants
         public static string BasketProductIdInvalid = "Ürün idsi geçersiz.";
         public static string ProductDeleted = "Ürün silindi.";
         public static string ProductUpdated = "Ürün güncellendi.";
+
+        public static string ProductAdded = "Ürün eklendi.";
     }
 }

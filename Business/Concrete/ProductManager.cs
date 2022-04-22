@@ -23,7 +23,20 @@ namespace Business.Concrete
 
         public IResult AddNewProduct(ProductForAddDto productToAdd)
         {
-            throw new NotImplementedException();
+            var addNewProduct = new Product
+            {
+                Name = productToAdd.Name,
+                UnitPrice = productToAdd.UnitPrice,
+                UnitsInStock = productToAdd.UnitsInStock,
+                Active = false,
+                Description = productToAdd.Description,
+                BrandId = productToAdd.BrandId,
+                OnSale = true,
+                ProductCode = productToAdd.ProductCode,
+                QuantityPerUnit = productToAdd.QuantityPerUnit
+            };
+            _productDal.Add(addNewProduct);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public IResult DeleteProduct(int productId)
