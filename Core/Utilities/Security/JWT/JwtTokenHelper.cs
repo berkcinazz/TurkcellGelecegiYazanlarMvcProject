@@ -22,13 +22,13 @@ namespace Core.Utilities.Security.JWT
         {
             _configuration = configuration;
             _tokenOptions = configuration.GetSection("TokenOptions").Get<TokenOptions>();
-            _tokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            _tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidIssuer = _tokenOptions.Issuer,
-                ValidAudience = _tokenOptions.Audince,
+                ValidAudience = _tokenOptions.Audience,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey)
             };
@@ -54,7 +54,7 @@ namespace Core.Utilities.Security.JWT
         {
             var jwt = new JwtSecurityToken(
                 issuer: tokenOptions.Issuer,
-                audience: tokenOptions.Audince,
+                audience: tokenOptions.Audience,
                 claims: SetClaims(user, operationClaims),
                 notBefore: DateTime.Now,
                 expires: _accessTokenExpiration,

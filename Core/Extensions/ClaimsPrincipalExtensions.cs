@@ -13,7 +13,6 @@ namespace Core.Extensions
             var result = claimsPrincipal?.FindAll(claimType)?.Select(x => x.Value).ToList();
             return result;
         }
-
         public static int GetAuthenticatedUserId(this ClaimsPrincipal claimsPrincipal)
         {
             var result = claimsPrincipal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;

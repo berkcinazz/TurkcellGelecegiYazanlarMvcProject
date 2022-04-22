@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using Entities.Concrete;
 using Entities.Dtos.Auth;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,7 @@ namespace Business.Concrete
                 Surname = registerCredentials.Surname,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
+                Address = registerCredentials.Address 
             };
             _userDal.Add(userToRegister);
             _userBasketService.AddUserBasket(userToRegister.Id);

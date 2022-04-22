@@ -14,6 +14,7 @@ namespace Entities.Dtos.Auth
         public string Surname { get; set; }
         public string Password { get; set; }
         public string PasswordVerify { get; set; }
+        public string Address { get; set; }
         public string Gsm { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }

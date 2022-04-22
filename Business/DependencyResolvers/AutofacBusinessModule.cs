@@ -3,6 +3,7 @@ using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
+using Core.Utilities.Security.JWT;
 using Core.Utilities.Utilities;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
@@ -42,10 +43,12 @@ namespace Business.DependencyResolvers
             builder.RegisterType<EfUserBasketDal>().As<IUserBasketDal>().SingleInstance();
             builder.RegisterType<EfUserBasketProductDal>().As<IUserBasketProductDal>().SingleInstance();
             builder.RegisterType<EfUserFavoriteDal>().As<IUserFavoriteDal>().SingleInstance();
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
             
             //Others
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+            builder.RegisterType<JwtTokenHelper>().As<ITokenHelper>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

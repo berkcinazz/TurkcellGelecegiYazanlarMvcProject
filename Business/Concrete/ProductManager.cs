@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Authentication;
+using Business.BusinessAspects.SecuredOperation;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -12,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
+    [Authentication]
     public class ProductManager : IProductService
     {
         private IProductDal _productDal;
@@ -46,7 +49,6 @@ namespace Business.Concrete
             _productDal.Delete(product);
             return new SuccessResult(Messages.ProductDeleted);
         }
-
         public IDataResult<List<ProductForListingDTO>> GetAllProducts()
         {
             var result = _productDal.GetAllProducts();
