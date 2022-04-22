@@ -12,7 +12,7 @@ namespace Entities.Dtos.Product
         public int Id { get; set; }
         public string Name { get; set; }
         public string ProductCode { get; set; }
-        public decimal UnitPrice { get; set; }
+        public double UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public string QuantityPerUnit { get; set; }
         public bool OnSale { get; set; }

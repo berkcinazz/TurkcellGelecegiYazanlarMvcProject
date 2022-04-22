@@ -16,10 +16,9 @@ namespace Entities.Dtos.Product
         public string QuantityPerUnit { get; set; }
         public bool OnSale { get; set; }
         public string Description { get; set; }
-        public decimal UnitPrice { get; set; }
-        public double ReviewPoint { get; set; }
-        public int ReviewCount { get; set; }
-        public Entities.Concrete.Brand Brand { get; set; }
+        public double UnitPrice { get; set; }
+        public string ProductCode { get; set; }
+        public Concrete.Brand Brand { get; set; }
         public Concrete.ProductImage MainImage { get; set; }
     }
 }

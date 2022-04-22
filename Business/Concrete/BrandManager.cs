@@ -26,7 +26,6 @@ namespace Business.Concrete
             Brand brandToAdd = new Brand()
             {
                 Name = brand.Name,
-                Avatar = FileHelper.AddFromBase64(brand.Avatar, "brandavatars"),
                 Approved = false
             };
             _brandDal.Add(brandToAdd);
@@ -44,12 +43,19 @@ namespace Business.Concrete
             var result = _brandDal.GetAll();
             return new SuccessDataResult<List<Brand>>(result);
         }
+
+        public IDataResult<Brand> GetBrandById(int id)
+        {
+            var brand = _brandDal.Get(b => b.Id == id);
+            if (brand == null) return new ErrorDataResult<Brand>(Messages.BrandNotFound);
+            return new SuccessDataResult<Brand>(brand);
+        }
+
         public IResult UpdateBrand(BrandForUpdateDTO brand)
         {
             Brand brandToUpdate = _brandDal.Get(b => b.Id == brand.Id);
             if (brandToUpdate == null) return new ErrorResult(Messages.BrandNotFound);
             brandToUpdate.Name = brand.Name;
-            brandToUpdate.Avatar = brand.Avatar;
             _brandDal.Update(brandToUpdate);
             return new SuccessResult(Messages.BrandUpdated);
         }

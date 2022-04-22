@@ -13,7 +13,7 @@ namespace Entities.Dtos.Product
     {
         public string Name { get; set; }
         public string ProductCode { get; set; }
-        public decimal UnitPrice { get; set; }
+        public float UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public string QuantityPerUnit { get; set; }
         public string Description { get; set; }

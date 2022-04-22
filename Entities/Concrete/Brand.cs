@@ -11,7 +11,6 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Avatar { get; set; }
         public bool Approved { get; set; }
     }
 }

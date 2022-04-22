@@ -16,7 +16,7 @@ namespace DataAccess.Concrete
             using (var context = new EFCoreContext())
             {
                
-                var result = context.Products.Include(i => i.Brand).Include(i => i.ProductImages).Include(i => i.ProductReviews).Select(p => new ProductForListingDTO()
+                var result = context.Products.Include(i => i.Brand).Include(i => i.ProductImages).Select(p => new ProductForListingDTO()
                 {
                     Id = p.Id,
                     Name = p.Name,
@@ -25,10 +25,9 @@ namespace DataAccess.Concrete
                     MainImage = p.ProductImages.Where(i => i.IsMainImage).FirstOrDefault(),
                     OnSale = p.OnSale,
                     QuantityPerUnit = p.QuantityPerUnit,
-                    ReviewCount = p.ProductReviews.Count,
-                    ReviewPoint = (double)p.ProductReviews.Sum(i => i.Stars) / (double)p.ProductReviews.Count,
                     UnitPrice = p.UnitPrice,
                     UnitsInStock = p.UnitsInStock,
+                    ProductCode = p.ProductCode,
                 });
                 return result.ToList();
             }
