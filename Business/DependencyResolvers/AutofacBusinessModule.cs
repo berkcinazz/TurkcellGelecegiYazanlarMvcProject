@@ -40,7 +40,7 @@ namespace Business.DependencyResolvers
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
             builder.RegisterType<EfProductReviewDal>().As<IProductReviewDal>().SingleInstance();
             builder.RegisterType<EfUserBasketDal>().As<IUserBasketDal>().SingleInstance();
-            builder.RegisterType<EfUserBasketProductDal>().As<IUserBasketDal>().SingleInstance();
+            builder.RegisterType<EfUserBasketProductDal>().As<IUserBasketProductDal>().SingleInstance();
             builder.RegisterType<EfUserFavoriteDal>().As<IUserFavoriteDal>().SingleInstance();
 
             

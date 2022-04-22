@@ -13,6 +13,8 @@ namespace Business.Abstract
     {
         IDataResult<List<ProductForListingDTO>> GetAllProducts();
         IResult AddNewProduct(ProductForAddDto productToAdd);
+        IResult DeleteProduct(int productId);
         IDataResult<Product> GetProductById(int productId);
+        IResult UpdateProduct(ProductForUpdateDto product);
     }
 }

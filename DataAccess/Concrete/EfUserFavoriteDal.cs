@@ -16,7 +16,7 @@ namespace DataAccess.Concrete
         {
             using (var context = new EFCoreContext())
             {
-                var result = context.UserFavorites.Include(i=>i.).Include(i=>i.UserId).Select(s=> new UserFavoriteForListingDTO
+                var result = context.UserFavorites.Include(i=>i.UserId).Select(s=> new UserFavoriteForListingDTO
                 {
                     AddedDate = s.AddedDate,
                     Product = s.Product,
