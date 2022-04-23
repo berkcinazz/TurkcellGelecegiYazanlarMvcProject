@@ -1,0 +1,33 @@
+﻿ @model List<Entities.Dtos.Product.ProductForListingDTO>
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h1>Tüm Ürünlerimiz</h1>
+        </div>
+        <div class="col-md-7">
+            <a asp-action="Create" class="btn btn-success"> Yeni Ürün Ekle</a>
+        </div>
+    </div>
+</div>
+<div class="container m-5 p-5">
+    <div class="row">
+        @foreach(var product in Model)
+        {
+            <div class="card" style="width: 18rem;">
+              <img src="./images/product/macbook.png" class="card-img-top" alt="MacBook">
+              <div class="card-body">
+                <h5 class="card-title">@(product.Name)</h5>
+                <p class="card-text">@(product.Description)</p>
+                <a href="#" class="btn btn-primary">Add To Cart</a>
+                <a asp-action="Edit" asp-route-id="@(product.Id)" class="btn btn-success"> Düzenle</a>
+              </div>
+            </div>
+        }
+    </div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

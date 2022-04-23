@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    [Authentication]
     public class ProductManager : IProductService
     {
         private IProductDal _productDal;
