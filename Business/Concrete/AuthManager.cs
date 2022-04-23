@@ -23,7 +23,8 @@ namespace Business.Concrete
         }
         public IResult Register(UserForRegisterDTO registerCredentials)
         {
-            var businessRules = BusinessRules.Run(UserShouldNotExistWithMail(registerCredentials.Mail), UserShouldNotExistWithGsm(registerCredentials.Gsm));
+            var businessRules = BusinessRules.Run(UserShouldNotExistWithMail(registerCredentials.Mail), UserShouldNotExistWithGsm(registerCredentials.Gsm),
+                IsPasswordVerifyCorrect(registerCredentials.Password, registerCredentials.PasswordVerify));
             if (businessRules != null) return businessRules;
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(registerCredentials.Password, out passwordHash, out passwordSalt);
@@ -58,6 +59,12 @@ namespace Business.Concrete
         {
             var result = _userService.GetByGsm(gsm);
             if (result.Data != null) return new ErrorResult(Messages.UserExistsWithSameGsm);
+            return new SuccessResult();
+        }
+
+        private IResult IsPasswordVerifyCorrect(string password, string passwordVerify)
+        {
+            if (password != passwordVerify) return new ErrorResult(Messages.PasswordVerifyNotMatch);
             return new SuccessResult();
         }
         #endregion
