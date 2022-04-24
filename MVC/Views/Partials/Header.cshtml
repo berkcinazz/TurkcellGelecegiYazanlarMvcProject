@@ -17,10 +17,25 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Kayıt Ol</a>
-                        </li>
                     </ul>
+                    @if(!User.Identity.IsAuthenticated)
+                    {
+                        <ul class="navbar-nav flex-row-reverse">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Kayıt Ol</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Giriş</a>
+                            </li>
+                    </ul>
+                    }else
+                    {
+                        <ul class="navbar-nav flex-row-reverse">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Çıkış Yap</a>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>
