@@ -1,9 +1,13 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Helpers;
 using Entities.Concrete;
 using Entities.Dtos.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MVC.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVC.Controllers
@@ -21,10 +25,16 @@ namespace MVC.Controllers
         // GET: ProductsController
         public IActionResult Index()
         {
-            var products = _productService.GetAllProducts();
-            return View(products.Data);
+            var products = _productService.GetAllProducts().Data;
+            ProductViewModel productViewModel = new ProductViewModel();
+            for (int i = 0; i < products.Count; i++)
+            {
+                productViewModel.ProductList.Add(products[i]);
+            }
+            productViewModel.Pager = new Pager(productViewModel.ProductList.Count, 5, 2);
+            return View(productViewModel);
         }
-
+        
         // GET: ProductsController/Details/5
         public IActionResult Details(int id)
         {
@@ -132,6 +142,19 @@ namespace MVC.Controllers
             }
             _productService.UpdateProduct(product);
             return RedirectToAction("Index");
+        }
+        public IActionResult Priority(int page = 1)
+        {
+            var productList = _productService.GetAllProducts().Data;
+            Pager pager = new Pager(productList.Count(), page, 5);
+            productList = productList.Skip((page - 1) * 5).Take(5).ToList();
+            ProductViewModel model = new ProductViewModel()
+            {
+                Pager = pager,
+                ProductList = productList.ToList(),
+                CurrentPage = page
+            };
+            return View(model);
         }
     }
 }

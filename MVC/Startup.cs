@@ -70,8 +70,9 @@ namespace MVC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Product}/{action=Index}/{id?}");
+                  name: "products",
+                  pattern: @"{controller=Product}/{action=Priority}/page=1",
+                  defaults: new { controller = "Product", action = "Priority", page = 1 });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
