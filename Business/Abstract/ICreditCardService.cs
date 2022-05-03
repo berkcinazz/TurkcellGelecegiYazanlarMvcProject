@@ -15,5 +15,6 @@ namespace Business.Abstract
         IResult AddCreditCard(CreditCardForAddDTO creditCard);
         IResult UpdateCreditCardTitle(CreditCardForUpdateDTO creditCard);
         IResult DeleteCreditCard(int id);
+        IDataResult<CreditCard> GetCreditCardByCardNumber(string cardNumber);
     }
 }

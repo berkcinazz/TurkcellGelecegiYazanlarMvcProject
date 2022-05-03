@@ -18,7 +18,6 @@ namespace Business.DependencyResolvers
 
             //Business
 
-            builder.RegisterType<AddressManager>().As<IAddressService>().SingleInstance();
             builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
             builder.RegisterType<CreditCardManager>().As<ICreditCardService>().SingleInstance();
             builder.RegisterType<OrderManager>().As<IOrderService>().SingleInstance();
@@ -33,7 +32,6 @@ namespace Business.DependencyResolvers
 
             //DataAccess
 
-            builder.RegisterType<EfAddressDal>().As<IAddressDal>().SingleInstance();
             builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
             builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>().SingleInstance();
             builder.RegisterType<EfOrderDal>().As<IOrderDal>().SingleInstance();

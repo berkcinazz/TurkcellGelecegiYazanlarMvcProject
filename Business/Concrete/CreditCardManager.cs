@@ -64,6 +64,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CreditCard>>(result);
         }
 
+        public IDataResult<CreditCard> GetCreditCardByCardNumber(string cardNumber)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
+            var result = _creditCardDal.Get(i => i.Number == cardNumber && i.UserId == userId);
+            if (result == null) return new ErrorDataResult<CreditCard>(Messages.CreditCardNotFound);
+            return new SuccessDataResult<CreditCard>(result);
+        }
+
         public IResult UpdateCreditCardTitle(CreditCardForUpdateDTO creditCard)
         {
             int userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
