@@ -40,7 +40,7 @@ namespace MVC.Controllers
 
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(principal);
-                return Redirect(loginCredentials.ReturnUrl);
+                return Redirect(loginCredentials.ReturnUrl == null ? "/" : loginCredentials.ReturnUrl);
             }
             else
             {

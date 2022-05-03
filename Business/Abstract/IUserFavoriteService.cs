@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using Entities.Dtos.UserFavorite;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace Business.Abstract
     {
         IDataResult<List<UserFavoriteForListingDTO>> GetUserFavorite();
         IResult AddFavorite(UserFavoriteForAddDTO userFavoriteDTO);
+        IDataResult<UserFavorite> GetUserFavoriteByProductId(int productId);
         IResult DeleteFavorite(int id);
+        IResult UpdateFavorite(int productId);
     }
 }

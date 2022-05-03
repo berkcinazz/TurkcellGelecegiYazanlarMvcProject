@@ -16,11 +16,11 @@ namespace DataAccess.Concrete
             using (var context = new EFCoreContext())
             {
                
-                var result = context.Products.Include(i => i.Brand).Include(i => i.ProductImages).Select(p => new ProductForListingDTO()
+                var result = context.Products.Include(i => i.Brands).Include(i => i.ProductImages).Include(i=>i.UserFavorites).Select(p => new ProductForListingDTO()
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Brand = p.Brand,
+                    Brand = p.Brands,
                     Description = p.Description,
                     MainImage = p.ProductImages.Where(i => i.IsMainImage).FirstOrDefault(),
                     OnSale = p.OnSale,
@@ -28,6 +28,7 @@ namespace DataAccess.Concrete
                     UnitPrice = p.UnitPrice,
                     UnitsInStock = p.UnitsInStock,
                     ProductCode = p.ProductCode,
+                    IsUserFavorite = (p.UserFavorites.ProductId == p.Id ? true : false)
                 });
                 return result.ToList();
             }

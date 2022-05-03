@@ -22,14 +22,13 @@ namespace Business.Concrete
         IUserFavoriteDal _userFavoriteDal;
         IHttpContextAccessor _httpContextAccessor;
 
-        public UserFavoriteManager(IUserFavoriteDal userFavoriteDal)
+        public UserFavoriteManager(IUserFavoriteDal userFavoriteDal, IHttpContextAccessor httpContextAccessor)
         {
             _userFavoriteDal = userFavoriteDal;
-            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IResult AddFavorite(UserFavoriteForAddDTO userFavoriteDTO)
-
         {
             var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
             var businessRulesResult = BusinessRules.Run(FavoriteShouldNotExists(userFavoriteDTO.ProductId, userId));
@@ -64,6 +63,36 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<UserFavoriteForListingDTO>>(Messages.UserFavoritesNotFound);
             }
             return new SuccessDataResult<List<UserFavoriteForListingDTO>>(result);
+        }
+
+        public IDataResult<UserFavorite> GetUserFavoriteByProductId(int productId)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
+            var result = _userFavoriteDal.Get(i => i.ProductId == productId && i.UserId == userId);
+            if (result == null) return new ErrorDataResult<UserFavorite>(Messages.UserFavoritesNotFound);
+            return new SuccessDataResult<UserFavorite>(result);
+        }
+
+        public IResult UpdateFavorite(int productId)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
+            var result = _userFavoriteDal.Get(i => i.ProductId == productId && i.UserId == userId);
+            if (result == null)
+            {
+                var favoriteToAdd = new UserFavorite()
+                {
+                    ProductId = productId,
+                    UserId = userId,
+                    AddedDate = DateTime.Now
+                };
+                _userFavoriteDal.Add(favoriteToAdd);                
+                return new SuccessResult(Messages.FavoriteProductUpdated);
+            }
+            else
+            {
+                DeleteFavorite(productId);
+                return new SuccessResult(Messages.FavoriteProductUpdated);
+            }
         }
         #region Business Rules
         private IResult FavoriteCanNotBeNull(int id, int userId)

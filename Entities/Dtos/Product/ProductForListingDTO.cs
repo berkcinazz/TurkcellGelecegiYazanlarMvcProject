@@ -18,6 +18,7 @@ namespace Entities.Dtos.Product
         public string Description { get; set; }
         public double UnitPrice { get; set; }
         public string ProductCode { get; set; }
+        public bool IsUserFavorite { get; set; }
         public Concrete.Brand Brand { get; set; }
         public Concrete.ProductImage MainImage { get; set; }
     }

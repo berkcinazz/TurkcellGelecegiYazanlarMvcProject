@@ -87,5 +87,7 @@ namespace Business.Constants
         public static string ProductUpdated = "Ürün güncellendi.";
         public static string ProductAdded = "Ürün eklendi.";
         public static string PasswordVerifyNotMatch = "Şifreleriniz uyuşmuyor.";
+
+        public static string FavoriteProductUpdated { get; internal set; }
     }
 }

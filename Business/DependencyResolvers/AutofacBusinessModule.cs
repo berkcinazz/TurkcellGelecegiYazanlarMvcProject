@@ -7,6 +7,7 @@ using Core.Utilities.Security.JWT;
 using Core.Utilities.Utilities;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Microsoft.AspNetCore.Http;
 
 namespace Business.DependencyResolvers
 {
@@ -25,8 +26,8 @@ namespace Business.DependencyResolvers
             builder.RegisterType<ProductImageManager>().As<IProductImageService>().SingleInstance();
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<ProductReviewManager>().As<IProductReviewService>().SingleInstance();
-            builder.RegisterType<UserBasketManager>().As<IUserBasketService>().SingleInstance();
             builder.RegisterType<UserBasketProductManager>().As<IUserBasketProductService>().SingleInstance();
+            builder.RegisterType<UserBasketManager>().As<IUserBasketService>().SingleInstance();
             builder.RegisterType<UserFavoriteManager>().As<IUserFavoriteService>().SingleInstance();
 
 

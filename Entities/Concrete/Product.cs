@@ -26,7 +26,8 @@ namespace Entities.Concrete
         public string Description { get; set; }
         public int BrandId { get; set; }
 
-        public virtual Brand Brand { get; set; }
+        public virtual Brand Brands { get; set; }
+        public virtual UserFavorite UserFavorites { get; set; }
         public virtual List<ProductImage> ProductImages { get; set; }
         public virtual List<ProductReview> ProductReviews { get; set; }
     }

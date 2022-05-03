@@ -16,10 +16,12 @@ namespace MVC.Controllers
     public class ProductController : Controller
     {
         IProductService _productService;
+        IUserFavoriteService _userFavoriteService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IUserFavoriteService userFavoriteService)
         {
             _productService = productService;
+            _userFavoriteService = userFavoriteService;
         }
 
         // GET: ProductsController
@@ -155,6 +157,13 @@ namespace MVC.Controllers
                 CurrentPage = page
             };
             return View(model);
+        }
+        [HttpPost]
+        public Task ChangeFavoriteOfProductForUser(int productId)
+        {
+            var result = _userFavoriteService.UpdateFavorite(productId);
+            return Task.FromResult(result.Message);
+            
         }
     }
 }

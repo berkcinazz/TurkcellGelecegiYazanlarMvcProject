@@ -15,17 +15,17 @@ namespace MVC
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -43,7 +43,7 @@ namespace MVC
                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 options.Cookie.IsEssential = true;
             });
-            services.AddHttpContextAccessor();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,12 +70,12 @@ namespace MVC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute(
                   name: "products",
                   pattern: @"{controller=Product}/{action=Priority}/page=1",
                   defaults: new { controller = "Product", action = "Priority", page = 1 });
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

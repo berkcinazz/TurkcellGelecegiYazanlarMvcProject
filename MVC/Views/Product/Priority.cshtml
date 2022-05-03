@@ -22,6 +22,10 @@
                 <p class="card-text">@(product.Description)</p>
                 <a href="#" class="btn btn-primary">Add To Cart</a>
                 <a asp-action="Edit" asp-route-id="@(product.Id)" class="btn btn-success"> Düzenle</a>
+                <label class="switch">
+                  <input type="checkbox" asp-action="ToggleActive" asp-route-id="@(product.Id)" @(product.IsUserFavorite ?"checked" : "")>
+                  <span class="slider round"></span>
+                </label>
               </div>
             </div>
         }

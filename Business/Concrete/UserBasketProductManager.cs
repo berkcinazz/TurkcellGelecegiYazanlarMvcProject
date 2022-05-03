@@ -20,16 +20,17 @@ namespace Business.Concrete
     public class UserBasketProductManager : IUserBasketProductService
     {
         IUserBasketProductDal _userBasketProductDal;
-        IHttpContextAccessor _httpContextAccessor;
         IUserBasketService _userBasketService;
         IProductService _productService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserBasketProductManager(IUserBasketProductDal userBasketProductDal, IUserBasketService userBasketService, IProductService productService)
+        public UserBasketProductManager(IUserBasketProductDal userBasketProductDal, IUserBasketService userBasketService,
+            IProductService productService, IHttpContextAccessor httpContextAccessor)
         {
             _userBasketProductDal = userBasketProductDal;
-            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
             _userBasketService = userBasketService;
             _productService = productService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IResult AddProductToBasket(UserBasketProductsForAddDTO userBasketProduct)
