@@ -15,7 +15,7 @@ namespace MVC.Controllers
         public IActionResult Index()
         {
             var userBasket = _userBasketProductService.GetAllProductsFromBasket();
-            return View(userBasket);
+            return View(userBasket.Data);
         }
     }
 }

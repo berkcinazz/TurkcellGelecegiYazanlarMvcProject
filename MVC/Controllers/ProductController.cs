@@ -2,6 +2,7 @@
 using Core.Utilities.Helpers;
 using Entities.Concrete;
 using Entities.Dtos.Product;
+using Entities.Dtos.UserBasketProduct;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +18,14 @@ namespace MVC.Controllers
     {
         IProductService _productService;
         IUserFavoriteService _userFavoriteService;
+        IUserBasketProductService _userBasketProductService;
 
-        public ProductController(IProductService productService, IUserFavoriteService userFavoriteService)
+        public ProductController(IProductService productService, IUserFavoriteService userFavoriteService,
+            IUserBasketProductService userBasketProductService)
         {
             _productService = productService;
             _userFavoriteService = userFavoriteService;
+            _userBasketProductService = userBasketProductService;
         }
 
         // GET: ProductsController
@@ -63,7 +67,6 @@ namespace MVC.Controllers
                 return View();
             }
         }
-        
         // GET: ProductsController/Edit/5
         public IActionResult Edit(int id)
         {
@@ -164,6 +167,17 @@ namespace MVC.Controllers
             var result = _userFavoriteService.UpdateFavorite(productId);
             return Task.FromResult(result.Message);
             
+        }
+        [HttpPost]
+        public IActionResult AddCart(int id)
+        {
+            UserBasketProductsForAddDTO prod = new UserBasketProductsForAddDTO()
+            {
+                ProductId = id,
+                Quantity = 1
+            };
+            _userBasketProductService.AddProductToBasket(prod);
+            return Task.CompletedTask.IsCompletedSuccessfully ? RedirectToAction(nameof(Index)) : RedirectToAction("Index");
         }
     }
 }

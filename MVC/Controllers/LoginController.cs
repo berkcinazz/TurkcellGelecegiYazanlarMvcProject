@@ -33,7 +33,8 @@ namespace MVC.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Email, result.Data.User.Email)
+                    new Claim(ClaimTypes.Email, result.Data.User.Email),
+                    new Claim(ClaimTypes.NameIdentifier,result.Data.User.Id.ToString())
                 };
 
                 var userIdentity = new ClaimsIdentity(claims, "LoginClaims");

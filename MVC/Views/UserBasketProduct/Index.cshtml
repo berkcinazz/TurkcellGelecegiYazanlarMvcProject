@@ -1,5 +1,5 @@
 ﻿@using Entities.Dtos.UserBasketProduct
-@model UserBasketProductsForListingDTO
+@model List<UserBasketProductsForListingDTO>
 
 <div class="container">
     <div class="row">
@@ -13,18 +13,15 @@
 </div>
 <div class="container m-5 p-5">
     <div class="row">
-        @*@foreach(var product in Model)
+        @foreach(var product in Model)
         {
             <div class="card" style="width: 18rem;">
               <img src="~/images/product/macbook.png" class="card-img-top" alt="MacBook">
               <div class="card-body">
-                <h5 class="card-title">@(product.Name)</h5>
-                <p class="card-text">@(product.Description)</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a asp-action="Edit" asp-route-id="@(product.Id)" class="btn btn-success"> Düzenle</a>
+                <h5 class="card-title">@(product.Product.Name)</h5>
               </div>
             </div>
-        }*@
+        }
     </div>
 </div>
 

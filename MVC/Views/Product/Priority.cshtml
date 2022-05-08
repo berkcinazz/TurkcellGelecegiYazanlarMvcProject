@@ -20,7 +20,7 @@
               <div class="card-body">
                 <h5 class="card-title">@(product.Name)</h5>
                 <p class="card-text">@(product.Description)</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
+                <a asp-action="AddCart" asp-route-id="@(product.Id)" class="btn btn-primary">Add To Cart</a>
                 <a asp-action="Edit" asp-route-id="@(product.Id)" class="btn btn-success"> Düzenle</a>
                 <label class="switch">
                   <input type="checkbox" asp-action="ToggleActive" asp-route-id="@(product.Id)" @(product.IsUserFavorite ?"checked" : "")>

@@ -40,7 +40,7 @@ namespace Business.Concrete
             if (!passwordCompare) return new ErrorDataResult<LoginResultDTO>(Messages.PasswordInvalid);
 
             var token = CreateAccessToken(user.Data);
-            LoginResultDTO result = new LoginResultDTO() { Token = token.Token, TokenExpires = token.Expiration, User = new UserForListingDTO() { Email = user.Data.Mail, Name = user.Data.Name, Surname = user.Data.Surname } };
+            LoginResultDTO result = new LoginResultDTO() { Token = token.Token, TokenExpires = token.Expiration, User = new UserForListingDTO() {Id=user.Data.Id, Email = user.Data.Mail, Name = user.Data.Name, Surname = user.Data.Surname } };
             return new SuccessDataResult<LoginResultDTO>(result);
         }
         private AccessToken CreateAccessToken(User user)
