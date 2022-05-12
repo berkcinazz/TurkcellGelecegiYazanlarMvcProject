@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
-using Business.BusinessAspects.Authentication;
-using Business.BusinessAspects.SecuredOperation;
 using Business.Constants;
+using Business.ValidationAspect.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -22,7 +22,7 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
-
+        [Validation(typeof(ProductForAddValidator))]
         public IResult AddNewProduct(ProductForAddDto productToAdd)
         {
             var addNewProduct = new Product

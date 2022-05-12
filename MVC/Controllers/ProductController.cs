@@ -130,7 +130,7 @@ namespace MVC.Controllers
                 return View();
             }
             _productService.AddNewProduct(product);
-            return RedirectToAction("Index");
+            return RedirectToAction("Priority");
         }
         [HttpPost]
         public IActionResult DeleteProduct(int id)
@@ -168,7 +168,7 @@ namespace MVC.Controllers
             return Task.FromResult(result.Message);
             
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult AddCart(int id)
         {
             UserBasketProductsForAddDTO prod = new UserBasketProductsForAddDTO()
