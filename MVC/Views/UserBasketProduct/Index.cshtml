@@ -1,13 +1,15 @@
 ﻿@using Entities.Dtos.UserBasketProduct
 @model List<UserBasketProductsForListingDTO>
-
+@{
+    ViewData["Title"] = "User Basket";
+}
 <div class="container">
     <div class="row">
         <div class="col-md-5">
             <h1>Sepetin</h1>
         </div>
         <div class="col-md-7">
-            <a asp-action="Priority" class="btn btn-success">Sepete Yeni Ürün Ekle</a>
+            <a asp-controller="Product" asp-action="Priority" class="btn btn-success">Sepete Yeni Ürün Ekle</a>
         </div>
     </div>
 </div>
