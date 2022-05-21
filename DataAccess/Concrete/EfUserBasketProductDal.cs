@@ -11,17 +11,17 @@ namespace DataAccess.Concrete
 {
     public class EfUserBasketProductDal : EFRepositoryBase<UserBasketProduct, EFCoreContext>, IUserBasketProductDal
     {
-        public List<UserBasketProductsForListingDTO> GetAllProductInUserBasket(int userId)
+        public List<UserBasketProductsForListingDTO> GetAllProductInUserBasket(int userBasketId)
         {
             using (var context = new EFCoreContext())
             {
-                var rr = context.UserBasketProducts.Include(i => i.UserBasket).Include(i => i.Product).Select(p => new UserBasketProductsForListingDTO()
+                var rr = context.UserBasketProducts.Include(i => i.UserBasket).Include(i => i.Product).Where(i=>i.UserBasketId==userBasketId).Select(p => new UserBasketProductsForListingDTO()
                 {
                     Id = p.Id,
                     Product = p.Product,
                     Quantity = p.Quantity,
                     UserBasket = p.UserBasket
-                }).Where(i => i.UserBasket.UserId == userId);
+                });
                 return rr.ToList();
             }
         }

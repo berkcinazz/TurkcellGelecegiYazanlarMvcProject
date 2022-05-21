@@ -78,7 +78,8 @@ namespace Business.Concrete
         public IDataResult<List<UserBasketProductsForListingDTO>> GetAllProductsFromBasket()
         {
             var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
-            var result = _userBasketProductDal.GetAllProductInUserBasket(userId);
+            var userBasketId = _userBasketService.GetUserBasket(userId).Data.Id;
+            var result = _userBasketProductDal.GetAllProductInUserBasket(userBasketId);
             return new SuccessDataResult<List<UserBasketProductsForListingDTO>>(result);
         }
         public IResult UpdateProductFromBasket(UserBasketProductsForUpdateDTO userBasketProduct)

@@ -11,6 +11,6 @@ namespace DataAccess.Abstract
 {
     public interface IUserBasketProductDal : IRepositoryBase<UserBasketProduct>
     {
-        List<UserBasketProductsForListingDTO> GetAllProductInUserBasket(int userId);
+        List<UserBasketProductsForListingDTO> GetAllProductInUserBasket(int userBasketId);
     }
 }
