@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Cache;
 using Core.Extensions;
 using Core.Utilities.Business;
 using Core.Utilities.IoC;
@@ -64,7 +65,6 @@ namespace Business.Concrete
             }
             return new SuccessResult(Messages.ProductAddedToBasket);
         }
-
         public IResult DeleteProductFromBasket(int id)
         {
             var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
@@ -74,7 +74,7 @@ namespace Business.Concrete
             _userBasketProductDal.Delete(deleteProductToBasket);
             return new SuccessResult(Messages.UserBasketProductDeleted);
         }
-
+        [CacheAspect(duration: 10)]
         public IDataResult<List<UserBasketProductsForListingDTO>> GetAllProductsFromBasket()
         {
             var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
@@ -96,7 +96,6 @@ namespace Business.Concrete
             _userBasketProductDal.Update(userBasketProductToUpdate);
             return new SuccessResult(Messages.UserBasketProductUpdated);
         }
-
         public IDataResult<UserBasketProduct> GetBasketItemByProductId(int productId)
         {
             var userId = _httpContextAccessor.HttpContext.User.GetAuthenticatedUserId();
